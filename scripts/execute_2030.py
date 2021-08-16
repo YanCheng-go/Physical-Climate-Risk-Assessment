@@ -104,6 +104,7 @@ wbtemp_model_folder_name = 'wbtemp_model_nonorm_ols'
 final_assessment_dir = os.path.join(work_directory, 'final assessment', 'interim')
 wta_assessment_dir = os.path.join(final_assessment_dir, 'wet-to-air')
 sen_assessment_dir = os.path.join(final_assessment_dir, 'sensitivity-analysis_regulatory-limits')
+water_stress_folder = os.path.join(work_directory, 'data', 'processed', 'water_stress')
 processed_assessment_dir = os.path.join(work_directory, 'final assessment', 'processed')
 master_fn = 'master'
 report_folder_name = 'reports'
@@ -400,7 +401,7 @@ at_fp = os.path.join(data_folder, '{}.csv'.format(output_fn_dict.get('gddp')))
 dt_fp = os.path.join(data_folder, '{}.csv'.format(output_fn_dict.get('spei_neg2')))
 wbt_hist_fp = os.path.join(data_folder, '{}.csv'.format(output_fn_dict.get('era5')))
 wbt_futu_fp = os.path.join(data_folder, '{}.csv'.format(output_fn_dict.get('gddp_wbt')))
-ws_fp = os.path.join(work_directory, 'data', 'processed', 'water_stress',
+ws_fp = os.path.join(water_stress_folder,
                      f'water-stress_srr{water_stress_year_suffix}.csv')
 insta = data_stats.InputStats(name=None, year_suffix=year_suffix, water_stress_year_suffix=water_stress_year_suffix)
 insta.var_chg_batch(wt_fp=wt_fp, at_fp=at_fp, dt_fp=dt_fp, ws_fp=ws_fp, wbt_futu_fp=wbt_futu_fp,
@@ -436,7 +437,9 @@ mr.generate_master_report(year_suffix=f'_{fut_eval_yrs[0]}-{fut_eval_yrs[1]}',
 # ==================================
 
 # Visualize % reduced capacity by turbine-cool types as boxplots.
-# Please run boxplots.py and remember to change the parameters accordingly.
+print('...Start to generate boxplots of % reduced capacity by turbine-cool types...')
+fp = os.path.join(work_directory, 'scripts', 'visualizations', 'boxplots.py')
+exec(open(fp).read())
 
 # Visualize exceedance probability of design air and water temperatures.
 print('...Start to visualize exceedance probability of design air and water temperatures...')

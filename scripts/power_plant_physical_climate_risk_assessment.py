@@ -138,6 +138,10 @@ class TppPhyRisk:
                                                           os.path.join(self.project_folder,
                                                                        'watertemp_output_temp_all'))
         self.water_stress_folder = os.path.join(self.project_folder, 'data\\processed\\water_stress')
+        if not os.path.exists(os.path.join(self.project_folder, 'data')):
+            os.mkdir(os.path.join(self.project_folder, 'data'))
+        if not os.path.exists(os.path.join(self.project_folder, 'data', 'processed')):
+            os.mkdir(os.path.join(self.project_folder, 'data', 'processed'))
         if not os.path.exists(self.water_stress_folder):
             os.mkdir(self.water_stress_folder)
         # module parameters (user-adjustable)
