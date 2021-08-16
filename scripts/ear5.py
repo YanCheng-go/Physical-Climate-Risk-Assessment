@@ -798,74 +798,16 @@ if __name__ == '__main__':
     ear5 = Ear5(output_directory=r'C:\Users\yan.cheng\PycharmProjects\EBRD\output_temp')
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # Test restructure_batch() and cal_wbtemp_batch() (need to test)
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # ear5.data_folder = r'C:\Users\yan.cheng\PycharmProjects\EBRD\ear5'
-    # df_batch = ear5.restructure_batch(save_output=True,
-    #                                   output_directory=os.path.join(ear5.work_directory, 'ear5_restructure'))
-    # df_batch_wbtemp = ear5.cal_wbtemp_batch(df_batch=df_batch,
-    #                                         save_output=True,
-    #                                         output_directory=os.path.join(ear5.work_directory, 'ear5_wetbulbtemp'))
-
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # Test train_mlr() (need to test)
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # wbtemp_foler = r'C:\Users\yan.cheng\PycharmProjects\EBRD\ear5_wetbulbtemp'
-    # plant_id = '3'
-    # X_range = ((0, 230), (0.127, 315))
-    # ear5.output_directory =  r'C:\Users\yan.cheng\PycharmProjects\EBRD\wbtemp_model_nonorm_ols'
-    # regr, coef, intercept, accuracy, output_code = ear5.train_mlr(
-    #     file_path=os.path.join(wbtemp_foler, f'PL_EBRD_TPP{plant_id}_ERA5_1980-2019_restructure_withWetBulbTemp.csv'),
-    #     indicator=[ear5.wbtemp_name, ear5.pr_name, ear5.airtemp_name],
-    #     save_output=False,
-    #     model='ols',
-    #     X_range=None)
-    #
-    # print(regr, coef, intercept, accuracy, output_code)
-    # # Read pkl files
-    # with open(os.path.join(ear5.output_directory, 'PL_EBRD_TPP1_ERA5_1980-2019_restructure_withWetBulbTemp_mlr.pkl'), "rb") as input_file:
-    #     d = pickle.load(input_file)
-    # print(d)
-
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # Test train_mlr_bacth()
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # wbtemp_model_folder_name = 'wbtemp_model_nonorm_ols'
-    # tpp_wbtemp_era5_folder_name = 'ear5_wetbulbtemp'
-    #
-    # ear5.data_folder = os.path.join(ear5.work_directory, tpp_wbtemp_era5_folder_name)
-    # ear5.output_directory = os.path.join(ear5.work_directory, wbtemp_model_folder_name)
-    # ear5.train_mlr_batch(indicator=[ear5.wbtemp_name, ear5.pr_name, ear5.airtemp_name],
-    #                      save_output=True, model='ols', X_range=None,
-    #                      output_directory=ear5.output_directory)
+    wbtemp_model_folder_name = 'wbtemp_model_nonorm_ols'
+    tpp_wbtemp_era5_folder_name = 'ear5_wetbulbtemp'
 
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # Test predict_wbtemp() (need to test)
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # model_folder = os.path.join(ear5.work_directory, 'wbtemp_model_nonorm_ols')
-    # tpp_climate_folder = os.path.join(ear5.work_directory,
-    #                                   'tpp_climate_gddp_restructure_all_withAirTempAvg_biasCorrected')
-    # ear5.output_directory = os.path.join(ear5.work_directory, 'tpp_climate_gddp_all'
-    #                                                           '_withWetBulbTemp_biasCorrected_nonorm_ols')
-    #
-    # cons = list(itertools.product([str(i) for i in range(1, 26)], ['1980-2005', '2010-2049']))
-    #
-    #
-    # def main(*args):
-    #     plant_id, time_span = args
-    #     model_path = os.path.join(model_folder, f'PL_EBRD_TPP{plant_id}_'
-    #                                             f'ERA5_1980-2019_restructure_withWetBulbTemp_mlr.pkl')
-    #     file_path = os.path.join(tpp_climate_folder, f'PL_EBRD_TPP{plant_id}_GDDP_{time_span}'
-    #                                                  f'_withAirTempAvg_biasCorrected.csv')
-    #     return ear5.predict_wbtemp(model_path=model_path, file_path=file_path, X_range=None,
-    #                                indicator=['pr_nexGddp_biasCorrectedVsEra5', 'airTempAvg_biasCorrectedVsEra5'],
-    #                                save_output=True)
-    #
-    #
-    # df_list = list(map(lambda args: main(*args), tqdm([args for args in cons])))
-    # df_dict = dict(zip([args for args in cons], df_list))
-    #
-    # print(df_dict)
+    ear5.data_folder = os.path.join(ear5.work_directory, tpp_wbtemp_era5_folder_name)
+    ear5.output_directory = os.path.join(ear5.work_directory, wbtemp_model_folder_name)
+    ear5.train_mlr_batch(indicator=[ear5.wbtemp_name, ear5.pr_name, ear5.airtemp_name],
+                         save_output=True, model='ols', X_range=None,
+                         output_directory=ear5.output_directory)
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # Test predict_wbtemp_bacth()
