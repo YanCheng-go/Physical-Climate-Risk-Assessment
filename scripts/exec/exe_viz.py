@@ -20,7 +20,9 @@ if not os.path.exists(assessment_report_folder):
     os.mkdir(assessment_report_folder)
 
 # Visualize % reduced capacity by turbine-cool types as boxplots.
-# Please run boxplots.py and remember to change the parameters accordingly.
+print('...Start to generate boxplots of % reduced capacity by turbine-cool types...')
+fp = os.path.join(work_directory, 'scripts', 'visualizations', 'boxplots.py')
+exec(open(fp).read())
 
 # Visualize exceedance probability of design air and water temperatures.
 print('...Start to visualize exceedance probability of design air and water temperatures...')
