@@ -33,8 +33,8 @@ FILE_NAME_SURFIX = {
 
 RAWDATA_TIMESPAN = {
     'SPEI': (None, None),  # Retrieve from datasets
-    # 'GDDP': ('1950-2005', '2006-2070'),
-    'GDDP': ('1980-2019', ''), # -> Indian plants for validation, i.e., using ERA5 datastes
+    'GDDP': ('1950-2005', '2006-2070'),
+    # 'GDDP': ('1980-2019', ''), # -> Indian plants for validation, i.e., using ERA5 datastes
     'ERA5': ('1980-2019', None),
     'WTUU': ('1965-2010', '2030-2069'),
 }  # timespan that indicates on the file name
