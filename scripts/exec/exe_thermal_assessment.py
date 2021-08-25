@@ -33,7 +33,7 @@ hydro_fp = os.path.join(work_directory, 'final assessment', 'hydro_result',
 module = ['air temp', 'water temp', 'drought', 'flood', 'water stress']
 tpp_working_fp = os.path.join(work_directory, 'tpp info', 'tpp_working.xlsx')  # power plant info
 vulnerability_factors_fp = os.path.join(work_directory, 'vulnerability',
-                                        'vulnerability_factors_20210409_Yan_TL.xlsx')  # vulnerability factor table
+                                        'vulnerability_factors_20210409.xlsx')  # vulnerability factor table
 vul_group_code = 3
 thd_id_noreg, thd_id_reg = 19, 21
 thd_group_codes = [thd_id_noreg, thd_id_reg]
@@ -53,7 +53,7 @@ sen_module = ['water temp']
 sen_thd_codes = range(21,
                       27)  # reference ids of vulnerability scenarios for the sensitivity analysis of regulatory limits
 vulnerability_factors_fp_2 = os.path.join(work_directory, 'vulnerability',
-                                          'vulnerability_factors_20210409_Yan_TL - Copy.xlsx')  # vulnerability factor table for sensitivity analysis of regulatory limits
+                                          'vulnerability_factors_20210409_forSensitivityAnalysis.xlsx')  # vulnerability factor table for sensitivity analysis of regulatory limits
 
 # User-adjustable parameters
 # specify what time frame to be assessed

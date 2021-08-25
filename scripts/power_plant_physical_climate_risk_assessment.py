@@ -125,7 +125,7 @@ class TppPhyRisk:
         self.tpp_locs_fp = kwargs_generator('tpp_locs_fp',
                                             os.path.join(self.temp_power_plant_info_data_folder, 'tpp_locs.xlsx'))
         self.vulnerability_factors_fp = kwargs_generator('vulnerability_factors_fp', os.path.join(self.project_folder,
-                                                                                                  r'vulnerability\vulnerability_factors_20210115_Yan_TL.xlsx'))
+                                                                                                  r'vulnerability\vulnerability_factors_20210409.xlsx'))
         # climatic data path
         self.climate_data_folder = kwargs_generator('climate_data_folder',
                                                     os.path.join(self.project_folder, 'new tpp climate corr'))
@@ -2915,7 +2915,7 @@ if __name__ == '__main__':
                      aq21base_fp=r'D:\WRI\GIS\baseline\aqueduct_global_maps_21_shp\aqueduct_global_dl_20150409.shp',
                      aq21futu_fp=r'D:\WRI\GIS\future\aqueduct_projections_20150309_shp\aqueduct_projections_20150309.shp',
                      gddp_recal_folder=r'C:\Users\yan.cheng\PycharmProjects\EBRD\tpp_climate_gddp_all_withWetBulbTemp_biasCorrected_nonorm_ols',
-                     vulnerability_factors_fp=r'C:\Users\yan.cheng\PycharmProjects\EBRD\vulnerability\vulnerability_factors_20210409_Yan_TL.xlsx',
+                     vulnerability_factors_fp=r'C:\Users\yan.cheng\PycharmProjects\EBRD\vulnerability\vulnerability_factors_20210409.xlsx',
                      spei_data_folder=r'C:\Users\yan.cheng\PycharmProjects\EBRD\spei',
                      tpp_water_temp_folder=r'C:\Users\yan.cheng\PycharmProjects\EBRD\tpp water temp all',
                      vul_group_code=vul_group_code, thd_group_code=thd_group_code,

@@ -95,7 +95,7 @@ tpr.export_restructured_era5_for_airtemp_module(in_folder=in_folder, out_folder=
 save_output = True  # specify if you'd like to save output locally or investigate results on the fly.
 suffix_test = ''  # specify how you'd like to indicate results of the testing run.
 
-vulnerability_factors_fp = os.path.join(work_directory, r'vulnerability\vulnerability_factors_20210409_Yan_TL.xlsx')
+vulnerability_factors_fp = os.path.join(work_directory, r'vulnerability\vulnerability_factors_20210409.xlsx')
 vul_group_code = 3  # 'Sheet3' -> vulnerability factors table.
 thd_group_code = 19  # reference code of the threshold settings.
 
