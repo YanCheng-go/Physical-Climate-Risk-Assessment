@@ -10,7 +10,7 @@ work_directory = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir)
 # ========================
 tpp_working_fp = os.path.join(work_directory, 'tpp info', 'tpp_working.xlsx')
 tpp_airtemp_folder_name = 'tpp_climate_gddp_all'
-tpp_era5_folder_name = 'ear5'
+tpp_era5_folder_name = 'era5'
 gddp_hist_timespan = (1950, 2005)
 gddp_futu_timespan = (2006, 2070)
 era5_timespan = (1980, 2019)

@@ -16,7 +16,7 @@ import tqdm
 from ipywidgets import widgets
 from plotly.subplots import make_subplots
 
-from scripts import ear5
+from scripts import era5
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
@@ -30,7 +30,7 @@ class TsViz:
     DROUGHT_FOLDER = os.path.join(PROJECT_FOLDER, 'spei')
     AIRTEMP_FOLDER = os.path.join(PROJECT_FOLDER, 'tpp climate')
     WATERTEMP_FOLDER = os.path.join(PROJECT_FOLDER, 'tpp water temp')
-    WBTEMP_FOLDER = os.path.join(PROJECT_FOLDER, 'ear5_wetbulbtemp')
+    WBTEMP_FOLDER = os.path.join(PROJECT_FOLDER, 'era5_wetbulbtemp')
     # GDDP_RECAL_FOLDER = os.path.join(PROJECT_FOLDER, 'tpp_climate_gddp_withWetBulbTemp') # old tpp climate gddp (not completed, no biascorrection)
     GDDP_RECAL_FOLDER = os.path.join(PROJECT_FOLDER, 'tpp_climate_gddp_all_withWetBulbTemp_biasCorrected_nonorm_ols')
 
@@ -38,7 +38,7 @@ class TsViz:
     DROUGHT_SURFIX_LIST = ['obs', 'cmip5']
 
     INDICATOR_NAME_LIST = ['airTempMax', 'airTempMin', 'spei', 'waterTemp', 'pr_nexGddp']
-    LAYER_NAME_LIST = ['air temperature', 'drought', 'water temperature', 'ear5', 'gddp recal']
+    LAYER_NAME_LIST = ['air temperature', 'drought', 'water temperature', 'era5', 'gddp recal']
 
     GDDP_INDICATOR_LIST = ['tasmax', 'tasmin', 'pr']
 
@@ -72,7 +72,7 @@ class TsViz:
         self.table_prefix = table_prefix
         self.table_surfix = table_surfix
         self.plant_id_list = plant_id_list
-        self.indicator_name_list = indicator_name_list + ear5.Ear5().INDICATOR_NAME_LIST + ['airTempAvg',
+        self.indicator_name_list = indicator_name_list + era5.Era5().INDICATOR_NAME_LIST + ['airTempAvg',
                                                                                             'wet_bulb_temperature_predicted']
         self.layer_name_list = layer_name_list
         self.gddp_recal_folder = gddp_recal_folder
@@ -188,7 +188,7 @@ class TsViz:
             'air temperature': 0,
             'drought': 1,
             'water temperature': 2,
-            'ear5': 3,
+            'era5': 3,
             'gddp recal': 4,  # basine-level gddp datasets
             'tpp gddp recal': 'tpp_air_temp'  # plant-level gddp datasets
         }.get(x, 'Invalid input!')
@@ -874,17 +874,17 @@ class TsViz:
                                  value=1,
                                  description='Plant ID',
                                  disabled=False)
-        indicator = widgets.SelectMultiple(options=ear5.Ear5().ERA5_INDICATOR_LIST + ['wet_bulb_temperature'],
-                                           value=[ear5.Ear5().wbtemp_name, ear5.Ear5().airtemp_name],
-                                           description='EAR5 Indicator',
+        indicator = widgets.SelectMultiple(options=era5.Era5().ERA5_INDICATOR_LIST + ['wet_bulb_temperature'],
+                                           value=[era5.Era5().wbtemp_name, era5.Era5().airtemp_name],
+                                           description='ERA5 Indicator',
                                            disabled=False)
         secondary_yaxis = widgets.Checkbox(value=True,
                                            description='Secondary y axis?',
                                            disabled=False,
                                            indent=False)
-        indicator_secondary = widgets.SelectMultiple(options=ear5.Ear5().ERA5_INDICATOR_LIST + ['wet_bulb_temperature'],
+        indicator_secondary = widgets.SelectMultiple(options=era5.Era5().ERA5_INDICATOR_LIST + ['wet_bulb_temperature'],
                                                      value=['total_precipitation'],
-                                                     description='EAR5 Indicator on secondary y axis',
+                                                     description='ERA5 Indicator on secondary y axis',
                                                      disabled=not secondary_yaxis.value)
 
         aftDict = {item: kwargs.get(item) for item in [i for i in kwargs.keys() if i not in ['indicator', 'plant_ids']]}
@@ -898,7 +898,7 @@ class TsViz:
         return {'air temperature': self.df_viz_airtemp,
                 'water temperature': self.df_viz_watertemp,
                 'drought': self.df_viz_drought,
-                'ear5': self.df_viz_wbtemp,
+                'era5': self.df_viz_wbtemp,
                 'gddp recal': self.df_viz_gddpRecal,
                 }.get(x, 'Invalid input!')
 
@@ -917,10 +917,10 @@ class TsViz:
         fig.show()
 
     def plot_multi_widgets(self):
-        layer = widgets.SelectMultiple(options=self.layer_name_list, value=['ear5', 'gddp recal'],
+        layer = widgets.SelectMultiple(options=self.layer_name_list, value=['era5', 'gddp recal'],
                                        description='Layer', disabled=False)
         indicator = widgets.SelectMultiple(options=self.indicator_name_list,
-                                           value=['wet_bulb_temperature_predicted', ear5.Ear5().wbtemp_name],
+                                           value=['wet_bulb_temperature_predicted', era5.Era5().wbtemp_name],
                                            description='Indicator',
                                            disabled=False)
         plant = widgets.Dropdown(options=[int(i) for i in range(1, 26)],

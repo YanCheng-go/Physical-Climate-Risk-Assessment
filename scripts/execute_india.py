@@ -67,14 +67,14 @@ print(f'Please download era5 datasets from google drive and save it here '
 era5_restructure_folder = os.path.join(work_directory, r'india_data\era5_restructure')
 era5_wtbtemp_folder = os.path.join(work_directory, r'india_data\era5_wetbulbtemp')
 
-from scripts import ear5
+from scripts import era5
 
 print('...Start to pre-process ERA5 datasets...')
-ear5 = ear5.Ear5(work_directory=work_directory,
+era5 = era5.Era5(work_directory=work_directory,
                  output_directory=os.path.join(work_directory, 'output_temp'),
                  data_folder=os.path.join(work_directory, r'india_data\era5'))
-df_batch = ear5.restructure_batch(save_output=False, output_directory=era5_restructure_folder)
-df_batch_wbtemp = ear5.cal_wbtemp_batch(df_batch=df_batch, save_output=True, output_directory=era5_wtbtemp_folder)
+df_batch = era5.restructure_batch(save_output=False, output_directory=era5_restructure_folder)
+df_batch_wbtemp = era5.cal_wbtemp_batch(df_batch=df_batch, save_output=True, output_directory=era5_wtbtemp_folder)
 
 # ------------------------------------------
 # 3. Prepare ERA5 for air temperature module

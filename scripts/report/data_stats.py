@@ -79,7 +79,7 @@ class InputStats:
             'spei': 'spei',
             'gddp': 'tpp_climate_gddp_restructure_all_withAirTempAvg',
             'uuwt': 'watertemp_output_temp_all',
-            'era5': 'ear5_wetbulbtemp',
+            'era5': 'era5_wetbulbtemp',
             'gddp_wbt': 'tpp_climate_gddp_all_withWetBulbTemp_biasCorrected_nonorm_ols',
         }.get(self.name, 'Invalid input!')
         self.prep_df_args = {

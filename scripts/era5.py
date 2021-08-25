@@ -25,9 +25,9 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
 
 
-class Ear5:
+class Era5:
     WORK_DIRECTORY = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-    DATA_FOLDER = os.path.join(WORK_DIRECTORY, 'ear5')
+    DATA_FOLDER = os.path.join(WORK_DIRECTORY, 'era5')
     OUTPUT_DIRECTORY = os.path.join(WORK_DIRECTORY, 'output')
     ERA5_INDICATOR_LIST = ['v_component_of_wind_10m', 'mean_2m_air_temperature', 'minimum_2m_air_temperature',
                            'maximum_2m_air_temperature', 'dewpoint_2m_temperature', 'total_precipitation',
@@ -195,7 +195,7 @@ class Ear5:
             elif 'file_name' in locals():
                 output_name = file_name + '_restructure'
             else:
-                output_name = 'ear5_restructure_output'
+                output_name = 'era5_restructure_output'
 
             if 'output_path' in kwargs and kwargs['output_path'] is not None:
                 fp_out = kwargs['output_path']
@@ -300,7 +300,7 @@ class Ear5:
             elif 'file_name' in locals():
                 output_name = file_name + '_withHumidity'
             else:
-                output_name = 'ear5_calhumidity_output'
+                output_name = 'era5_calhumidity_output'
 
             if 'output_path' in kwargs and kwargs['output_path'] is not None:
                 fp_out = kwargs['output_path']
@@ -369,7 +369,7 @@ class Ear5:
             elif 'file_name' in locals():
                 output_name = file_name
             else:
-                output_name = 'ear5_calwebtemp_output'
+                output_name = 'era5_calwebtemp_output'
 
             if 'output_path' in kwargs and kwargs['output_path'] is not None:
                 fp_out = kwargs['output_path']
@@ -795,19 +795,19 @@ class Ear5:
 
 
 if __name__ == '__main__':
-    ear5 = Ear5(output_directory=r'C:\Users\yan.cheng\PycharmProjects\EBRD\output_temp')
+    era5 = Era5(output_directory=r'C:\Users\yan.cheng\PycharmProjects\EBRD\output_temp')
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # Test train_mlr_bacth()
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     wbtemp_model_folder_name = 'wbtemp_model_nonorm_ols'
-    tpp_wbtemp_era5_folder_name = 'ear5_wetbulbtemp'
+    tpp_wbtemp_era5_folder_name = 'era5_wetbulbtemp'
 
-    ear5.data_folder = os.path.join(ear5.work_directory, tpp_wbtemp_era5_folder_name)
-    ear5.output_directory = os.path.join(ear5.work_directory, wbtemp_model_folder_name)
-    ear5.train_mlr_batch(indicator=[ear5.wbtemp_name, ear5.pr_name, ear5.airtemp_name],
+    era5.data_folder = os.path.join(era5.work_directory, tpp_wbtemp_era5_folder_name)
+    era5.output_directory = os.path.join(era5.work_directory, wbtemp_model_folder_name)
+    era5.train_mlr_batch(indicator=[era5.wbtemp_name, era5.pr_name, era5.airtemp_name],
                          save_output=True, model='ols', X_range=None,
-                         output_directory=ear5.output_directory)
+                         output_directory=era5.output_directory)
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # Test predict_wbtemp_bacth()
@@ -820,9 +820,9 @@ if __name__ == '__main__':
     wbtemp_hist_timespan = (1980, 2005)  # time span concerned as baseline condition of wet-bulb temperatures from ERA5.
     era5_timespan = (1980, 2019)
 
-    ear5.predict_wbtemp_batch(model_folder=os.path.join(ear5.work_directory, wbtemp_model_folder_name),
-                              data_folder=os.path.join(ear5.work_directory, tpp_airtemp_biasCorrected_folder_name),
-                              output_directory=os.path.join(ear5.work_directory, tpp_gddp_wbtemp_folder_name),
+    era5.predict_wbtemp_batch(model_folder=os.path.join(era5.work_directory, wbtemp_model_folder_name),
+                              data_folder=os.path.join(era5.work_directory, tpp_airtemp_biasCorrected_folder_name),
+                              output_directory=os.path.join(era5.work_directory, tpp_gddp_wbtemp_folder_name),
                               plant_id_list=plant_id_list,
                               hist_timespan_str='-'.join(map(str, wbtemp_hist_timespan)),
                               futu_timespan_str='-'.join(map(str, fut_eval_yrs)),

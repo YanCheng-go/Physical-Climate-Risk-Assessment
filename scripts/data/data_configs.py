@@ -6,7 +6,7 @@ Data configurations / metadata.
 FOLDER_NAME = {
     'SPEI': 'spei',
     'GDDP': 'tpp_climate_gddp_restructure_withAirTempAvg',
-    'ERA5': 'ear5_wetbulbtemp',
+    'ERA5': 'era5_wetbulbtemp',
     'WTUU': 'watertemp_output_temp',
 }
 

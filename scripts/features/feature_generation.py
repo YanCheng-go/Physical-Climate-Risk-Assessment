@@ -21,7 +21,7 @@ class Era5:
     def __init__(self, **kwargs):
         self.project_folder = utils.kwargs_generator(kwargs, 'project_folder',
                                                      os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir)))
-        self.era5_folder = utils.kwargs_generator(kwargs, 'data_folder', 'ear5_wetbulbtemp')
+        self.era5_folder = utils.kwargs_generator(kwargs, 'data_folder', 'era5_wetbulbtemp')
 
 
 class NexGddp(Era5):

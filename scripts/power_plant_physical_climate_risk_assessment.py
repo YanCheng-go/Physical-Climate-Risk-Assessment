@@ -129,7 +129,7 @@ class TppPhyRisk:
         # climatic data path
         self.climate_data_folder = kwargs_generator('climate_data_folder',
                                                     os.path.join(self.project_folder, 'new tpp climate corr'))
-        self.wbtemp_folder = kwargs_generator('wbtemp_folder', os.path.join(self.project_folder, 'ear5_wetbulbtemp'))
+        self.wbtemp_folder = kwargs_generator('wbtemp_folder', os.path.join(self.project_folder, 'era5_wetbulbtemp'))
         self.gddp_recal_folder = kwargs_generator('gddp_recal_folder',
                                                   os.path.join(self.project_folder, 'tpp_climate_gddp_withWetBulbTemp'))
         self.tpp_water_temp_folder = kwargs_generator('tpp_water_temp_folder',

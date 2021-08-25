@@ -41,8 +41,8 @@ tpp_airtemp_exp_folder_name = 'new tpp climate corr'
 tpp_airtemp_post_folder_name = 'tpp_climate_gddp_restructure_all_withAirTempAvg'
 tpp_airtemp_biasCorrected_folder_name = 'tpp_climate_gddp_restructure_all_withAirTempAvg_biasCorrected'
 tpp_gddp_wbtemp_folder_name = 'tpp_climate_gddp_all_withWetBulbTemp_biasCorrected_nonorm_ols'
-tpp_era5_folder_name = 'ear5'
-tpp_wbtemp_era5_folder_name = 'ear5_wetbulbtemp'
+tpp_era5_folder_name = 'era5'
+tpp_wbtemp_era5_folder_name = 'era5_wetbulbtemp'
 wbtemp_model_folder_name = 'wbtemp_model_nonorm_ols'
 
 print(f'Start!\n')
@@ -87,10 +87,10 @@ tpr.export_restructured_airtemp(in_folder=os.path.join(work_directory, tpp_airte
 # Calculate wet-bulb temperatures from ERA5 datasets
 # ==================================================
 
-from scripts import ear5
+from scripts import era5
 
 print('\n...Start to calculate wet-bulb temperatures from ERA5 datasets...')
-era5 = ear5.Ear5(work_directory=work_directory)
+era5 = era5.Era5(work_directory=work_directory)
 era5.data_folder = os.path.join(era5.work_directory, tpp_era5_folder_name)
 era5.output_directory = os.path.join(work_directory, tpp_wbtemp_era5_folder_name)
 df_batch = era5.restructure_batch(save_output=False)
@@ -112,11 +112,11 @@ gddp_gf.correct_bias_batch(save_output=True, output_folder_name=tpp_airtemp_bias
 # Model wet-bulb temperature as a function of air temperatures and precipitations from ERA5 datasets
 # ==================================================================================================
 
-from scripts import ear5
+from scripts import era5
 
 print(
     '\n...Start to model the relationship between wet-bulb temperatures and air temperatures and precipitations using ERA5 datasets...')
-era5 = ear5.Ear5(work_directory=work_directory)
+era5 = era5.Era5(work_directory=work_directory)
 era5.data_folder = os.path.join(era5.work_directory, tpp_wbtemp_era5_folder_name)
 era5.output_directory = os.path.join(era5.work_directory, wbtemp_model_folder_name)
 era5.train_mlr_batch(indicator=[era5.wbtemp_name, era5.pr_name, era5.airtemp_name],
@@ -135,10 +135,10 @@ era5.train_mlr_batch(indicator=[era5.wbtemp_name, era5.pr_name, era5.airtemp_nam
 # Predict wet-bulb temperatures using air temperatures and precipitations from GDDP datasets
 # ==========================================================================================
 
-from scripts import ear5
+from scripts import era5
 
 print('\n...Start to calculate wet-bulb temperatures as a function of air temperatures and precipitations from GDDP...')
-era5 = ear5.Ear5(work_directory=work_directory,
+era5 = era5.Era5(work_directory=work_directory,
                  output_directory=os.path.join(work_directory, tpp_gddp_wbtemp_folder_name))
 era5.predict_wbtemp_batch(model_folder=os.path.join(work_directory, wbtemp_model_folder_name),
                           data_folder=os.path.join(work_directory, tpp_airtemp_biasCorrected_folder_name),

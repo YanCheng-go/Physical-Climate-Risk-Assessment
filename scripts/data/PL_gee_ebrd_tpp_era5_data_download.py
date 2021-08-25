@@ -117,7 +117,7 @@ if __name__ == '__main__':
     main(tpp_fp=os.path.join(work_directory, 'tpp info', 'tpp_working.xlsx'),
          imgcol_url="ECMWF/ERA5/DAILY", time_span=(1980, 2019), calcScale=5000, start=0, save_output=True)
 
-    tpp_era5_folder_name = 'ear5'
+    tpp_era5_folder_name = 'era5'
     if not os.path.exists(os.path.join(work_directory, tpp_era5_folder_name)):
         os.mkdir(os.path.join(work_directory, tpp_era5_folder_name))
     print(f'Please download era5 datasets from google drive and save it here '
