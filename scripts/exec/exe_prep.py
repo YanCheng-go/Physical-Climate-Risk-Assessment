@@ -4,6 +4,12 @@ Preprocess input climatic datasets.
 1. Data extraction: extract water temperatures from netCDF datasets.
 2. Data transformation: reconstruct and uniform input data format/structure.
 3. Feature engineering: calculate additional variables, i.e., bias-corrected climate variables, wet-bulb temperatures.
+
+Note:
+    Global water temperature are not publicly availability due to agreement with the third party.
+    1) Please keep so-called user-defined parameters and skip water temperature extraction step.
+    2) Instead, please use water temperature time series in the form of excel tables (folder "tpp water temp all")
+    that was extracted for all thermal power plants by geolocation from the global water temperature datasets.
 """
 
 import os
