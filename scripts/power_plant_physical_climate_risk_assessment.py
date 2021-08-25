@@ -436,7 +436,7 @@ class TppPhyRisk:
         Extract time series from the flood database.
 
         :param baseline_data: list, data over the baseline period
-        :param design_protection: float, e.g.,  1/250, 1/1000
+        :param design_protection: float, e.g.,  250, 1000
         :param projected_data: list, data over the projection period.
         :param vulnerability_dataframe: pandas dataframe, vulnerability factors.
         :return: future_protection, baseExpectedDamage, futuExpectedDamage
@@ -2898,6 +2898,7 @@ if __name__ == '__main__':
     fut_eval_yrs = [2010, 2049]
     flood_year = 2030
     water_stress_year = 2030
+    water_stress_folder = r'D:\WRI\GIS'
     # if module == ['drought']:
     #     his_eval_yrs = [1850, 2004]
 
@@ -2906,18 +2907,21 @@ if __name__ == '__main__':
     surfix_date = datetime.now().strftime("%Y%m%d")
     print(
         f'\nfinal-assessment_vul{str(vul_group_code)}_thd{str(thd_group_code)}_rcp{str(surfix_scenarios)}_{str(surfix_module)}_{str(surfix_date)}{str(surfix_test)}\n')
+    work_directory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 
     tpr = TppPhyRisk(module=module,
                      flood_data_folder=r"D:\WRI\Floods\inland",
                      save_output=save_output,
                      final_assessment_prefix=f'final-assessment_vul{str(vul_group_code)}_thd{str(thd_group_code)}_rcp{str(surfix_scenarios)}_{str(surfix_module)}_{str(surfix_date)}{surfix_test}',
                      final_assessment_dir=None,
-                     aq21base_fp=r'D:\WRI\GIS\baseline\aqueduct_global_maps_21_shp\aqueduct_global_dl_20150409.shp',
-                     aq21futu_fp=r'D:\WRI\GIS\future\aqueduct_projections_20150309_shp\aqueduct_projections_20150309.shp',
-                     gddp_recal_folder=r'C:\Users\yan.cheng\PycharmProjects\EBRD\tpp_climate_gddp_all_withWetBulbTemp_biasCorrected_nonorm_ols',
-                     vulnerability_factors_fp=r'C:\Users\yan.cheng\PycharmProjects\EBRD\vulnerability\vulnerability_factors_20210409.xlsx',
-                     spei_data_folder=r'C:\Users\yan.cheng\PycharmProjects\EBRD\spei',
-                     tpp_water_temp_folder=r'C:\Users\yan.cheng\PycharmProjects\EBRD\tpp water temp all',
+                     aq21base_fp=os.path.join(water_stress_folder,
+                                              r'baseline\aqueduct_global_maps_21_shp\aqueduct_global_dl_20150409.shp'),
+                     aq21futu_fp=os.path.join(water_stress_folder,
+                                              r'future\aqueduct_projections_20150309_shp\aqueduct_projections_20150309.shp'),
+                     gddp_recal_folder=os.path.join(work_directory,'tpp_climate_gddp_all_withWetBulbTemp_biasCorrected_nonorm_ols'),
+                     vulnerability_factors_fp=os.path.join(work_directory, r'vulnerability\vulnerability_factors_20210409.xlsx'),
+                     spei_data_folder=os.path.join(work_directory, 'spei'),
+                     tpp_water_temp_folder=os.path.join(work_directory, 'tpp water temp all'),
                      vul_group_code=vul_group_code, thd_group_code=thd_group_code,
                      scenario_id_list=scenario_id_list,
                      air_bc_yrs=[1950, 2005],
