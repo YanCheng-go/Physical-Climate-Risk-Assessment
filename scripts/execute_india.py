@@ -46,7 +46,7 @@ if not os.path.exists(assessment_report_folder):
 # 1) Download data from your google drive
 # 2) Create a folder under data\raw\india and name the folder as era5, save data in era5
 # --------------------------------------------------------------------------------------
-tpp_fp = os.path.join(work_directory, r"data\ancillary\indian_plant_candidates_v1.xlsx")
+tpp_fp = os.path.join(work_directory, 'data', 'ancillary', 'indian_plant_candidates_v1.xlsx')
 era5_timespan = [1980, 2019]
 tpp_era5_folder_name = 'era5'
 
@@ -64,23 +64,23 @@ print(f'Please download era5 datasets from google drive and save it here '
 # ----------------------------
 # 2. Pre-process ERA5 datasets
 # ----------------------------
-era5_restructure_folder = os.path.join(work_directory, r'india_data\era5_restructure')
-era5_wtbtemp_folder = os.path.join(work_directory, r'india_data\era5_wetbulbtemp')
+era5_restructure_folder = os.path.join(work_directory, 'india_data', 'era5_restructure')
+era5_wtbtemp_folder = os.path.join(work_directory, 'india_data', 'era5_wetbulbtemp')
 
 from scripts import era5
 
 print('...Start to pre-process ERA5 datasets...')
 era5 = era5.Era5(work_directory=work_directory,
                  output_directory=os.path.join(work_directory, 'output_temp'),
-                 data_folder=os.path.join(work_directory, r'india_data\era5'))
+                 data_folder=os.path.join(work_directory, 'india_data', 'era5'))
 df_batch = era5.restructure_batch(save_output=False, output_directory=era5_restructure_folder)
 df_batch_wbtemp = era5.cal_wbtemp_batch(df_batch=df_batch, save_output=True, output_directory=era5_wtbtemp_folder)
 
 # ------------------------------------------
 # 3. Prepare ERA5 for air temperature module
 # ------------------------------------------
-in_folder = os.path.join(work_directory, r'india_data\era5')
-out_folder = os.path.join(work_directory, r'india_data\era5_4_airtemp')
+in_folder = os.path.join(work_directory, 'india_data', 'era5')
+out_folder = os.path.join(work_directory, 'india_data', 'era5_4_airtemp')
 
 from scripts import power_plant_physical_climate_risk_assessment as master
 
@@ -95,15 +95,15 @@ tpr.export_restructured_era5_for_airtemp_module(in_folder=in_folder, out_folder=
 save_output = True  # specify if you'd like to save output locally or investigate results on the fly.
 suffix_test = ''  # specify how you'd like to indicate results of the testing run.
 
-vulnerability_factors_fp = os.path.join(work_directory, r'vulnerability\vulnerability_factors_20210409.xlsx')
+vulnerability_factors_fp = os.path.join(work_directory, 'vulnerability', 'vulnerability_factors_20210409.xlsx')
 vul_group_code = 3  # 'Sheet3' -> vulnerability factors table.
 thd_group_code = 19  # reference code of the threshold settings.
 
 scenario_id_list = []  # only inspect historical situations, i.e., no future scenarios.
 module = ['air temp']  # only assess air temperature-induced generation losses.
 air_bc_yrs = [2013, 2016]  # only analyse generation data from 2013 through 2016 given current data availability.
-climate_data_folder = os.path.join(work_directory, r'india_data\era5_4_airtemp')  # output of step 3.
-tpp_working_fp = os.path.join(work_directory, r'tpp info\tpp_working_india_CCPP.xlsx')  # plant information.
+climate_data_folder = os.path.join(work_directory, 'india_data', 'era5_4_airtemp')  # output of step 3.
+tpp_working_fp = os.path.join(work_directory, 'tpp info', 'tpp_working_india_CCPP.xlsx')  # plant information.
 
 from scripts import power_plant_physical_climate_risk_assessment as master
 

@@ -68,7 +68,7 @@ def prep_data(plant_name):
 
     # Read datasets
     # Power generation
-    gen_df = pd.read_csv(os.path.join(work_directory, r'data\external\india_generation', 'dgr2.csv'), index_col=0)
+    gen_df = pd.read_csv(os.path.join(work_directory, 'data', 'external', 'india_generation', 'dgr2.csv'), index_col=0)
     gen_df['Plant-Unit-Type'] = gen_df['Plant-Unit-Type'].str.replace('  ', ' ')
     gen_df['Plant-Unit-Type'] = gen_df['Plant-Unit-Type'].str.replace('MANERI BHALI - I HPS', 'MANERI BHALI _ I HPS')
     gen_df['Plant-Unit-Type'] = gen_df['Plant-Unit-Type'].str.replace('MANERI BHALI - II HPS', 'MANERI BHALI _ II HPS')
@@ -87,14 +87,14 @@ def prep_data(plant_name):
     gen_df_all.VALUE = gen_df_all.VALUE.astype(float)
 
     # Outages
-    inop_df = pd.read_csv(os.path.join(work_directory, r'data\external\india_generation', 'dgr10.csv'), index_col=0)
+    inop_df = pd.read_csv(os.path.join(work_directory, 'data', 'external', 'india_generation', 'dgr10.csv'), index_col=0)
     inop_df.PLANT = inop_df.PLANT.str.replace('  ', ' ')
     inop_df.DATE = pd.to_datetime(inop_df.DATE, format='%Y%m%d')
     inop_df['MONTH'] = inop_df.DATE.dt.month
     inop_df_all = inop_df.copy()
 
     # Air temperatures from ERA5
-    at_df = pd.read_csv(os.path.join(work_directory, r'india_data\era5_4_airtemp',
+    at_df = pd.read_csv(os.path.join(work_directory, 'india_data', 'era5_4_airtemp',
                                      f'PL_EBRD_TPP{plant_id.get(plant_name)}_historical_NAN_1980_2019.csv'),
                         index_col=0)
     at_df.date = pd.to_datetime(at_df.date, format='%Y-%m-%d')
