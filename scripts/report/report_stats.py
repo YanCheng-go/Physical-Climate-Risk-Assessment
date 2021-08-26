@@ -328,10 +328,6 @@ if __name__ == '__main__':
     suffix_date = '-'.join(date_list)
     pr = PrepReport(interim_folder=interim_folder)
 
-    # Need to test
-    # pr.main(vul_id_list, thd_id_list, scenario_id_list, module_list=module_list, date_list=date_list, groupby_list=groupby_list,
-    #         output_fn='test_20210425')
-
     # ------------------------------------------------------------------------------------------------
     # Use-case 1
     # Merge initial output of the final assessment
@@ -339,18 +335,3 @@ if __name__ == '__main__':
     pr.merge_batch(vul_id_list, thd_id_list, scenario_id_list, module_list=module_list, date_list=date_list,
                    groupby_list=groupby_list,
                    output_fn=f'final-assessment-merge_{suffix_date}{suffix}')
-
-    # -------------------------------------------------------------------------------------------------
-    # Use case 2
-    # Calculate rankings for the updated merged final assessment which was updated mannually previously (need to test)
-    # -------------------------------------------------------------------------------------------------
-    # # Manual updated merged file
-    # df = pd.read_excel(
-    #     r'C:\Users\yan.cheng\PycharmProjects\EBRD\final assessment\processed\final-assessment-merge_20210507_ByPlant.xlsx',
-    #     index_col=0)
-    # # # Attach thresholds
-    #
-    # # # Calculate rankings and export
-    # df_withStats = pr.cal_rankings(df=df)
-    # df_withStats.to_excel(
-    #     r'C:\Users\yan.cheng\PycharmProjects\EBRD\reports\assessment\test_20210507_ByPlant_report.xlsx')

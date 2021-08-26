@@ -952,5 +952,3 @@ def viz_prob_cdf(variable, thd=None, indicator=None, save_output=None, xlabel='v
 
 if __name__ == '__main__':
     all_in_one()
-    # viz_climate_extremes_histogram(in_df=in_df_gddp)
-    # viz_prob_cdf(variable='air temperature', xlabel='Air temp.', thd=295 - 273.15, indicator='airTempAvg')

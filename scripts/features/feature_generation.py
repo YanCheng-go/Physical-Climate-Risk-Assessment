@@ -201,35 +201,3 @@ class NexGddp(Era5):
 
 if __name__ == '__main__':
     gddp_gf = NexGddp(gddp_folder='tpp_climate_gddp_restructure_all_withAirTempAvg')
-
-    # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # Test correct_bias() (need to test)
-
-    # out_prj, out_bc, *_ = gddp_gf.correct_bias(plant_id='3', indicator='precipitation', model='NorESM1-M',
-    #                                            prj_scenario='rcp45', bc_start_year=1980, bc_end_year=2005,
-    #                                            prj_start_year=2030, prj_end_year=2070)
-
-    # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # Test correct_bias_batch()
-    tpp_airtemp_biasCorrected_folder_name = 'tpp_climate_gddp_restructure_all_withAirTempAvg_biasCorrected'
-    fut_eval_yrs = [2010, 2049]
-
-    gddp_gf.correct_bias_batch(save_output=True, output_folder_name=tpp_airtemp_biasCorrected_folder_name,
-                               prj_start_year=fut_eval_yrs[0], prj_end_year=fut_eval_yrs[1],
-                               correct_prj=True, correct_bc=True)
-
-    # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # # Debug (need to test)
-    # from scripts import projection_bias_correct
-    # out_prj, out_bc, out_prj_all, out_bc_all, df_obs, df_bc, df_prj = gddp_gf.correct_bias(plant_id='3', indicator='precipitation',
-    #                                                                                        model='NorESM1-M',
-    #                                                                                        prj_scenario='rcp45', bc_start_year=1980,
-    #                                                                                        bc_end_year=2005,
-    #                                                                                        prj_start_year=2030, prj_end_year=2070)
-    # obs = df_obs.value.values
-    # prj = df_bc.value.values
-    # dates = df_obs.date.values
-    # dfFuture = df_prj
-    # reverse_zeros = True
-    # d = projection_bias_correct.cdf_transform(obs, prj, dates, dfFuture, reverse_zeros)
-    # print(d)
