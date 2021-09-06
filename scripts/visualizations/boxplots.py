@@ -169,7 +169,7 @@ def main(work_directory, report_excel_fp, year_id, thd_id, group, vul_id, save_f
                 axes[1].set_ylim([0, 0.02])
                 axes[2].set_ylim([0, 0.02])
 
-    axes[0].set_ylabel('Estimated plant-level reduced capacity')
+    axes[0].set_ylabel('Estimated plant-level percent annual generation losses')
     axes[0].set_yticklabels(['{:,.1%}'.format(x) for x in axes[0].get_yticks()])
     for i in range(0, 3):
         if group == 'Fuel-Turbine':
