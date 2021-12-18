@@ -1078,7 +1078,7 @@ def restructure_dataset_master(dataset, work_directory, output_folder_name, wate
             df_list = list(map(f, list(itertools.product(*[tv.switch_filename_info(2)[i] for i in (1, 0)]))))
             pd.concat(df_list).to_csv(
                 os.path.join(tv.output_directory,
-                             f'PL_EBRD_TPP{plant_id}_waterTemp-WeekAvg-output_{futu_timespan}.csv'))
+                             f'PL_EBRD_TPP{plant_id}_waterTemp-weekAvg-output_{futu_timespan}.csv'))
 
         list(map(main, tqdm.tqdm(tv.switch_filename_info(2)[2], desc="Projection period")))
 
