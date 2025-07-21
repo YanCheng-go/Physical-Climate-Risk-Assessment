@@ -1,6 +1,18 @@
 # Physical-Climate-Risk-Assessment
 Physical climate risk assessment framework for power sector designed by WRI in collaboration with EBRD.
 
+Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
+
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+
+
 # Scope of work
 This github repository is for reproducing the results in our [journal article]() and WRI [working paper](). We are adapting the scripts to enable more general usages. Before the official version is published, you may encounter errors to run the scripts for your own cases. If so, please do not hesitate to contact us or post issues on the project page.
 
