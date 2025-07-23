@@ -14,9 +14,9 @@ This work is licensed under a
 
 
 # Scope of work
-This github repository is for reproducing the results in our [journal article]() and WRI [working paper](). We are adapting the scripts to enable more general usages. Before the official version is published, you may encounter errors to run the scripts for your own cases. If so, please do not hesitate to contact us or post issues on the project page.
+This github repository is for reproducing the results in our [journal article](https://www.nature.com/articles/s43247-023-00782-w) and WRI [working paper](https://www.wri.org/research/assessing-physical-climate-risks-european-bank-power-portfolio). We are adapting the scripts to enable more general usages. Before the official version is published, you may encounter errors to run the scripts for your own cases. If so, please do not hesitate to contact us or post issues on the project page.
 
-This python project enables the assessment of physical climate risks for EBRD’s thermal and hydro power plants. The thermal assessment framework consists of five modules corresponding to five climate hazards, i.e., air temperature rise, water temperature rise, droughts, floods, water stress. The hydro assessment relied on an artificial recurrent neural network, namely Long-Short Term Memory (LSTM) and regression models. Please refer to [our paper](URL) for more information. Figure 1 illustrates the assessment framework.
+This python project enables the assessment of physical climate risks for EBRD’s thermal and hydro power plants. The thermal assessment framework consists of five modules corresponding to five climate hazards, i.e., air temperature rise, water temperature rise, droughts, floods, water stress. The hydro assessment relied on an artificial recurrent neural network, namely Long-Short Term Memory (LSTM) and regression models. Please refer to [our paper](https://www.nature.com/articles/s43247-023-00782-w) for more information. Figure 1 illustrates the assessment framework.
 
 ![Physical climate risk assessment framework](docs/ebrd-physical-climate-risks%20-%20high-level%20flowchart-vertical.svg)
 
